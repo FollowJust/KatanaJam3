@@ -10,17 +10,17 @@ public class CarObject : MonoBehaviour
 
     void Start()
     {
-        targetPosition = targetPosition = transform.position;
+        
     }
 
     Vector3 getStep()
     {
-        return (endPoint - currentPoint) / velocity;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 step = endPoint - startPoint;   
+        
     }
 }
