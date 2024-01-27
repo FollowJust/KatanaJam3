@@ -1,0 +1,21 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CarObject : MonoBehaviour
+{
+    public Vector3 startPosition, targetPosition;
+
+    public float velocity = 10.0f;
+
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
