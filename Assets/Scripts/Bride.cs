@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 [RequireComponent(typeof(CharacterController), typeof(MeshFilter), typeof(MeshRenderer))]
@@ -35,6 +36,14 @@ public class Bride : MonoBehaviour
         frameID++;
 
         controller.Move(positionDelta);
+    }
+
+    void LateUpdate()
+    {
+        if (dirtiness >= maxDirteness)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit)
