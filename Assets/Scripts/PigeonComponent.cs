@@ -9,7 +9,6 @@ public class PigeonComponent : MonoBehaviour
 
     void Start()
     {
-        shitPrefab = GameObject.FindGameObjectWithTag("ShitPrefab");
     }
 
     void Update()
