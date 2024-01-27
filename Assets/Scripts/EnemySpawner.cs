@@ -30,7 +30,7 @@ public class NewBehaviourScript : MonoBehaviour
             dictObjBounds.Add(enemy.name, enemyBounds);
             Destroy(enemySpawned);
         }
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < 100; i++)
         {
             spawnEnemys(enemyPrefabs);
         }
