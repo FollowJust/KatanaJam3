@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 [RequireComponent(typeof(CharacterController), typeof(MeshFilter), typeof(MeshRenderer))]
@@ -21,26 +22,37 @@ public class Bride : MonoBehaviour
 
     private GameObject deadMessage;
 
+    private Vector3 forwardVector;
+    private Vector3 rightVector;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        Cursor.visible = false;
+        UnityEngine.Cursor.visible = false;
 
         deadMessage = GameObject.FindGameObjectWithTag("DeadMessage");
         if (deadMessage)
         {
             deadMessage.SetActive(false);
         }
+
+        forwardVector = GetComponentInChildren<Camera>().transform.forward;
+        forwardVector.y = 0.0f;
+        forwardVector.Normalize();
+
+        rightVector = GetComponentInChildren<Camera>().transform.right;
+        rightVector.y = 0.0f;
+        rightVector.Normalize();
     }
 
     void Update()
     {
         if (!isDead)
         {
-            Vector2 playerInput = new Vector2(-Input.GetAxis("Horizontal"), -Input.GetAxis("Vertical"));
+            Vector2 playerInput = new Vector2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
             Vector2.ClampMagnitude(playerInput, 1.0f);
 
-            Vector3 acceleration = speed * new Vector3(playerInput.x, 0.0f, playerInput.y) - drag * velocity;
+            Vector3 acceleration = speed * ((playerInput.x * forwardVector) + (playerInput.y * rightVector)) - drag * velocity;
             velocity += acceleration * Time.deltaTime;
             Vector3 positionDelta = Time.deltaTime * velocity + 0.5f * Time.deltaTime * Time.deltaTime * acceleration;
 
