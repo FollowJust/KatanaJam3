@@ -10,6 +10,9 @@ TagManager:
   - Road
   - WinningMessage
   - Altar
+  - EnemyFly
+  - EnemyWalk
+  - EnemyDrive
   layers:
   - Default
   - TransparentFX
