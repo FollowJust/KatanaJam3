@@ -9,6 +9,7 @@ public class Bride : MonoBehaviour
     private Vector3 velocity;
 
     private float dirtiness = 0.0f;
+    private float maxDirteness = 100.0f;
 
     void Start()
     {
@@ -37,5 +38,17 @@ public class Bride : MonoBehaviour
 
             dirtiness += dirtyObject.dirtAmount;
         }
+    }
+
+    // WHY THE FUCK I'M DOING THIS?
+    public float GetDirtiness()
+    {
+        return dirtiness;
+    }
+
+    // WHY THE FUCK I'M DOING THIS?
+    public float GetMaxDirtiness()
+    {
+        return maxDirteness;
     }
 }
