@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -107,6 +108,7 @@ public class Bride : MonoBehaviour
             dirtyObject.SetWasTriggered();
 
             dirtiness += dirtyObject.dirtAmount;
+            dirtiness = (dirtiness < 0.0f) ? 0.0f : dirtiness;
             if (dirtyObject.destroyAfterCollision)
             {
                 Destroy(dirtyObject.gameObject);
