@@ -6,7 +6,8 @@ using UnityEngine;
 public enum DirtyObjectType
 { 
     Default,
-    PigeonShit
+    PigeonShit,
+    Brush
 };
 
 public class DirtyObject : MonoBehaviour

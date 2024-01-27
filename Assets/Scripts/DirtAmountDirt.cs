@@ -24,6 +24,7 @@ public class DirtAmountDirt : MonoBehaviour
             float width = maxWidth * dirtinessPercent;
 
             rectTransform.sizeDelta = new Vector2(width, rectTransform.sizeDelta.y);
+            rectTransform.anchoredPosition = new Vector2(width / 2.0f, 0.0f);
         }
     }
 }

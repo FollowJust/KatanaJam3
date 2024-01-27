@@ -1,6 +1,8 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 [RequireComponent(typeof(CharacterController), typeof(MeshFilter), typeof(MeshRenderer))]
@@ -16,33 +18,85 @@ public class Bride : MonoBehaviour
 
     private UInt64 frameID = 0;
 
+    private bool isDead = false;
+    private float timeAfterDeath = 0.0f;
+
+    private GameObject deadMessage;
+
+    private Vector3 forwardVector;
+    private Vector3 rightVector;
+
+    private bool hasWon = false;
+    private GameObject winningMessage;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        Cursor.visible = false;
+        UnityEngine.Cursor.visible = false;
+
+        deadMessage = GameObject.FindGameObjectWithTag("DeadMessage");
+        if (deadMessage)
+        {
+            deadMessage.SetActive(false);
+        }
+
+        winningMessage = GameObject.FindGameObjectWithTag("WinningMessage");
+        if (winningMessage)
+        {
+            winningMessage.SetActive(false);
+        }
+
+        forwardVector = GetComponentInChildren<Camera>().transform.forward;
+        forwardVector.y = 0.0f;
+        forwardVector.Normalize();
+
+        rightVector = GetComponentInChildren<Camera>().transform.right;
+        rightVector.y = 0.0f;
+        rightVector.Normalize();
     }
 
     void Update()
     {
-        Vector2 playerInput = new Vector2(-Input.GetAxis("Horizontal"), -Input.GetAxis("Vertical"));
-        Vector2.ClampMagnitude(playerInput, 1.0f);
+        if (!isDead && !hasWon)
+        {
+            Vector2 playerInput = new Vector2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
+            Vector2.ClampMagnitude(playerInput, 1.0f);
 
-        Vector3 acceleration = speed * new Vector3(playerInput.x, 0.0f, playerInput.y) - drag * velocity;
-        velocity += acceleration * Time.deltaTime;
-        Vector3 positionDelta = Time.deltaTime * velocity + 0.5f * Time.deltaTime * Time.deltaTime * acceleration;
+            Vector3 acceleration = speed * ((playerInput.x * forwardVector) + (playerInput.y * rightVector)) - drag * velocity;
+            velocity += acceleration * Time.deltaTime;
+            Vector3 positionDelta = Time.deltaTime * velocity + 0.5f * Time.deltaTime * Time.deltaTime * acceleration;
 
-        // A stupid hack because character controller doesn't see collisions if it doesn't move. So I move it always
-        positionDelta.x += (frameID % 2 == 0) ? 0.001f : -0.001f;
-        frameID++;
+            // A stupid hack because character controller doesn't see collisions if it doesn't move. So I move it always
+            positionDelta.x += (frameID % 2 == 0) ? 0.001f : -0.001f;
+            frameID++;
 
-        controller.Move(positionDelta);
+            controller.SimpleMove(velocity);
+        }
     }
 
     void LateUpdate()
     {
-        if (dirtiness >= maxDirteness)
+        if (hasWon)
         {
+            if (!winningMessage.activeSelf)
+            {
+                winningMessage.SetActive(true);
+            }
+        }
+        else if (dirtiness >= maxDirteness)
+        {
+            isDead = true;
 
+            if (!deadMessage.activeSelf)
+            {
+                deadMessage.SetActive(true);
+            }
+
+            timeAfterDeath += Time.deltaTime;
+            if (timeAfterDeath >= 2.0f)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
         }
     }
 
@@ -54,10 +108,15 @@ public class Bride : MonoBehaviour
             dirtyObject.SetWasTriggered();
 
             dirtiness += dirtyObject.dirtAmount;
+            dirtiness = (dirtiness < 0.0f) ? 0.0f : dirtiness;
             if (dirtyObject.destroyAfterCollision)
             {
                 Destroy(dirtyObject.gameObject);
             }
+        }
+        else if (hit.gameObject.tag == "Altar")
+        {
+            hasWon = true;
         }
     }
 
