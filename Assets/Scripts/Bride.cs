@@ -42,7 +42,7 @@ public class Bride : MonoBehaviour
     {
         if (dirtiness >= maxDirteness)
         {
-
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
