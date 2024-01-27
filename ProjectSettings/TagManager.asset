@@ -8,6 +8,8 @@ TagManager:
   - ShitPrefab
   - DeadMessage
   - Road
+  - WinningMessage
+  - Altar
   layers:
   - Default
   - TransparentFX

@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -25,6 +26,9 @@ public class Bride : MonoBehaviour
     private Vector3 forwardVector;
     private Vector3 rightVector;
 
+    private bool hasWon = false;
+    private GameObject winningMessage;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -34,6 +38,12 @@ public class Bride : MonoBehaviour
         if (deadMessage)
         {
             deadMessage.SetActive(false);
+        }
+
+        winningMessage = GameObject.FindGameObjectWithTag("WinningMessage");
+        if (winningMessage)
+        {
+            winningMessage.SetActive(false);
         }
 
         forwardVector = GetComponentInChildren<Camera>().transform.forward;
@@ -47,7 +57,7 @@ public class Bride : MonoBehaviour
 
     void Update()
     {
-        if (!isDead)
+        if (!isDead && !hasWon)
         {
             Vector2 playerInput = new Vector2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
             Vector2.ClampMagnitude(playerInput, 1.0f);
@@ -66,13 +76,21 @@ public class Bride : MonoBehaviour
 
     void LateUpdate()
     {
-        if (dirtiness >= maxDirteness)
+        if (hasWon)
         {
-            if (!isDead)
+            if (!winningMessage.activeSelf)
+            {
+                winningMessage.SetActive(true);
+            }
+        }
+        else if (dirtiness >= maxDirteness)
+        {
+            isDead = true;
+
+            if (!deadMessage.activeSelf)
             {
                 deadMessage.SetActive(true);
             }
-            isDead = true;
 
             timeAfterDeath += Time.deltaTime;
             if (timeAfterDeath >= 2.0f)
@@ -90,10 +108,15 @@ public class Bride : MonoBehaviour
             dirtyObject.SetWasTriggered();
 
             dirtiness += dirtyObject.dirtAmount;
+            dirtiness = (dirtiness < 0.0f) ? 0.0f : dirtiness;
             if (dirtyObject.destroyAfterCollision)
             {
                 Destroy(dirtyObject.gameObject);
             }
+        }
+        else if (hit.gameObject.tag == "Altar")
+        {
+            hasWon = true;
         }
     }
 

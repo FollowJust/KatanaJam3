@@ -5,29 +5,45 @@ using UnityEngine;
 public class NewBehaviourScript : MonoBehaviour
 {
     [SerializeField]
-    private GameObject enemyPrefab;
+    private GameObject[] enemyPrefabs;
 
     [SerializeField]
     private float spawnInterval;
 
-    public Vector3 spawnAreaMin;
-    public Vector3 spawnAreaMax;
+    public Collider spawnArea;
+
+    public Camera mainCamera;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(spawnEnemy(spawnInterval, enemyPrefab));
+        StartCoroutine(spawnEnemys(spawnInterval, enemyPrefabs));
     }
 
-    private IEnumerator spawnEnemy(float interval, GameObject enemy)
-    { 
+    private IEnumerator spawnEnemys(float interval, GameObject[] enemys)
+    {
+        var enemy = enemys[Random.Range(0, enemys.Length-1)];
         yield return new WaitForSeconds(interval);
-        Vector3 spawnPosition = new Vector3(
-            Random.Range(spawnAreaMin.x, spawnAreaMax.x),
-            Random.Range(spawnAreaMin.y, spawnAreaMax.y),
-            Random.Range(spawnAreaMin.z, spawnAreaMax.z));
-        GameObject newEnemy = Instantiate(enemy, spawnPosition, Quaternion.identity);
-        StartCoroutine(spawnEnemy(interval, enemy));
+
+        Bounds bounds = spawnArea.bounds;
+        bool isVisible;
+        Vector3 spawnPosition;
+
+        do
+        {
+            float x = Random.Range(bounds.min.x, bounds.max.x);
+            float y = Random.Range(bounds.min.y, bounds.max.y);
+            float z = Random.Range(bounds.min.z, bounds.max.z);
+            spawnPosition = new Vector3(x, y, z);
+
+            Vector3 viewportPos = mainCamera.WorldToViewportPoint(spawnPosition);
+            isVisible = viewportPos.z > 0 && viewportPos.x > 0 && viewportPos.x < 1 && viewportPos.y > 0 && viewportPos.y < 1;
+
+        } while (isVisible);
+
+        Instantiate(enemy, spawnPosition, Quaternion.identity);
+        StartCoroutine(spawnEnemys(interval, enemys));
     }
 
     // Update is called once per frame
