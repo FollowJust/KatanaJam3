@@ -15,7 +15,7 @@ public class CarObject : MonoBehaviour
 
     Vector3 getStep()
     {
-        
+        return 0;
     }
 
     // Update is called once per frame
