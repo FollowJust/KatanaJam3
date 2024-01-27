@@ -10,7 +10,7 @@ public class CarObject : MonoBehaviour
     public CarObject(Vector3 start, Vector3 target)
     {
         sourcePosition = start;
-        targetPosition = target + (target - start); 
+        targetPosition = target + (target - start) * 0.1f; 
     }
 
     void Start()
@@ -25,7 +25,7 @@ public class CarObject : MonoBehaviour
 
         if (TargetReached())
         {
-
+            transform.position = sourcePosition;
         }
     }
 
@@ -33,12 +33,6 @@ public class CarObject : MonoBehaviour
     {
         float step = Time.deltaTime * velocity;
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        GameObject hit = other.gameObject;
-        
     }
 
 

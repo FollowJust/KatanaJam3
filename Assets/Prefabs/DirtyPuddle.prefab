@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -6335651989582960264}
   - component: {fileID: 2215121028202865984}
   - component: {fileID: 5646989557315370976}
+  - component: {fileID: 550938210594108968}
   m_Layer: 0
   m_Name: DirtyPuddle
   m_TagString: DirtyObject
@@ -100,7 +101,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -118,6 +119,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9c069c7dbc108045b3101da16697560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 3
   dirtAmount: 10
   destroyAfterCollision: 0
+--- !u!114 &550938210594108968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8961999890706521295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8124473799eb45478a7fbd4ed744ed1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splashPrefab: {fileID: 6820782955300957122, guid: e8d9bde30f6cccb45903c62ab00b0f92, type: 3}
