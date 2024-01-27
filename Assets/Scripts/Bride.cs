@@ -60,7 +60,7 @@ public class Bride : MonoBehaviour
             positionDelta.x += (frameID % 2 == 0) ? 0.001f : -0.001f;
             frameID++;
 
-            controller.Move(positionDelta);
+            controller.SimpleMove(velocity);
         }
     }
 
