@@ -7,6 +7,8 @@ TagManager:
   - DirtyObject
   - ShitPrefab
   - DeadMessage
+  - WinningMessage
+  - Altar
   layers:
   - Default
   - TransparentFX
