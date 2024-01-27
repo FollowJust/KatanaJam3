@@ -7,6 +7,7 @@ TagManager:
   - DirtyObject
   - ShitPrefab
   - DeadMessage
+  - Road
   layers:
   - Default
   - TransparentFX
