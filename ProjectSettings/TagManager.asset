@@ -9,6 +9,9 @@ TagManager:
   - DeadMessage
   - WinningMessage
   - Altar
+  - EnemyFly
+  - EnemyWalk
+  - EnemyDrive
   layers:
   - Default
   - TransparentFX
