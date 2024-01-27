@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DirtyObject
   - ShitPrefab
+  - DeadMessage
   layers:
   - Default
   - TransparentFX
