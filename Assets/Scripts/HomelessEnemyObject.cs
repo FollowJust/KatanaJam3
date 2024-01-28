@@ -11,7 +11,6 @@ public class HomelessEnemyObject : WalkingEnemyObjectBase
     void Update()
     {
         // Maybe add stamina for him?
-        
-        // base.Move();
+        base.Move();
     }
 }
