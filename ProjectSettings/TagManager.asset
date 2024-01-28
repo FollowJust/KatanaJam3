@@ -7,8 +7,12 @@ TagManager:
   - DirtyObject
   - ShitPrefab
   - DeadMessage
+  - Road
   - WinningMessage
   - Altar
+  - EnemyFly
+  - EnemyWalk
+  - EnemyDrive
   layers:
   - Default
   - TransparentFX

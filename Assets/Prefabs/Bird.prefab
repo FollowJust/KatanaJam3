@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 1233382157468786809}
   - component: {fileID: 8964819144912760327}
   - component: {fileID: 4581054831311497787}
+  - component: {fileID: -4478205697189680207}
   m_Layer: 0
   m_Name: Bird
-  m_TagString: Untagged
+  m_TagString: EnemyFly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,3 +106,16 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-4478205697189680207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288927361835280212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38595869810fdc445b64acf01b6fddb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Poop: {fileID: 6820782955300957122, guid: d46a31f15d1cf0c41aea0d5478309624, type: 3}
