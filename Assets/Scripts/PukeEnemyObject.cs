@@ -11,6 +11,7 @@ public class PukeEnemyObject : WalkingEnemyObjectBase
 
     void Start()
     {
+        target = GameObject.FindGameObjectsWithTag("Player")[0];
         animationController = GetComponentInChildren<Animator>();
     }
 
@@ -18,7 +19,7 @@ public class PukeEnemyObject : WalkingEnemyObjectBase
     {
         // base.Move();
         base.Idle();
-        // Puke();
+        Puke();
     }
 
     void Puke()
@@ -29,8 +30,9 @@ public class PukeEnemyObject : WalkingEnemyObjectBase
             return;
         }
 
-        GameObject pukeProjectile = Instantiate(pukePrefab, transform.position + (target.transform.position - transform.position) * 0.1f, transform.rotation, transform);
-        Destroy(pukeProjectile, 2.0f);
+        Vector3 headOffset = new Vector3(0.0f, 1.0f, 0.0f);
+        GameObject pukeProjectile = Instantiate(pukePrefab, transform.position + headOffset + (target.transform.position - transform.position) * 0.1f, transform.rotation, transform);
+        Destroy(pukeProjectile, 4.0f);
 
         timeAfterLastPuke = pukeCooldown;
     }

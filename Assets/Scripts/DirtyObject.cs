@@ -10,7 +10,8 @@ public enum DirtyObjectType
     Brush,
     DirtyPuddle,
     DirtySplashes,
-    Shit
+    Shit,
+    Puke
 };
 
 public class DirtyObject : MonoBehaviour
@@ -35,6 +36,14 @@ public class DirtyObject : MonoBehaviour
             case DirtyObjectType.PigeonShit:
             {
                 Vector3 acceleration = new Vector3(0.0f, -9.8f, 0.0f);
+                velocity += acceleration * Time.deltaTime;
+                Vector3 positionDelta = Time.deltaTime * velocity + 0.5f * Time.deltaTime * Time.deltaTime * acceleration;
+                
+                gameObject.transform.position += positionDelta;
+            } break;
+            case DirtyObjectType.Puke:
+            {
+                Vector3 acceleration = new Vector3(0.0f, -4.8f, 0.0f);
                 velocity += acceleration * Time.deltaTime;
                 Vector3 positionDelta = Time.deltaTime * velocity + 0.5f * Time.deltaTime * Time.deltaTime * acceleration;
                 
