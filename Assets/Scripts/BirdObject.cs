@@ -43,13 +43,10 @@ public class BirdObject : MonoBehaviour
             {
                 var soundsArray = GetComponents<AudioSource>();
                 var rnd = Random.Range(0, soundsArray.Length - 1);
-                soundsArray[rnd].volume = 0.005f;
-                soundsArray[rnd].priority = 20;
                 soundsArray[rnd].maxDistance = 40;
                 var clip = soundsArray[rnd].clip;
 
-                AudioSource.PlayClipAtPoint(soundsArray[rnd].clip, transform.position);
-                soundsArray[rnd].Play();
+                AudioSource.PlayClipAtPoint(clip, transform.position);
             }
         }
     }

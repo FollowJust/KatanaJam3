@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 254159377771203324}
   - component: {fileID: 1316088990905996440}
   - component: {fileID: 8058911533314327227}
+  - component: {fileID: 896801539681459256}
   m_Layer: 0
   m_Name: ThirdPersonCamera
   m_TagString: Untagged
@@ -224,6 +225,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 405062529504574147}
+  mouseSens: 200
+  arrowSens: 30
+--- !u!81 &896801539681459256
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5182002172075528916}
+  m_Enabled: 1
 --- !u!1001 &4751453142676731405
 PrefabInstance:
   m_ObjectHideFlags: 0
