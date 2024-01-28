@@ -9,9 +9,12 @@ public class WalkingEnemyObjectBase : MonoBehaviour
     protected GameObject target;
     protected bool active = false;
 
+    protected Animator animationController;
+
     void Start()
     {
         target = GameObject.FindGameObjectsWithTag("Player")[0];
+        animationController = GetComponentInChildren<Animator>();
     }
 
     protected void Move()
@@ -22,7 +25,19 @@ public class WalkingEnemyObjectBase : MonoBehaviour
         }
         if (target && agent && agent.isOnNavMesh)
         {
+            if (animationController)
+            {
+                animationController.Play("Run");
+            }
             agent.SetDestination(target.transform.position);
+        }
+    }
+
+    protected void Idle()
+    {
+        if (animationController)
+        {
+            animationController.Play("Idle");
         }
     }
 }

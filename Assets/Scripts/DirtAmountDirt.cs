@@ -21,7 +21,6 @@ public class DirtAmountDirt : MonoBehaviour
         if (bride != null) 
         {
             float dirtinessPercent = bride.GetDirtiness() / bride.GetMaxDirtiness();
-            Debug.Log($"dirtinessPercent {dirtinessPercent}");
             float width = maxWidth * dirtinessPercent;
 
             rectTransform.sizeDelta = new Vector2(width, rectTransform.sizeDelta.y);

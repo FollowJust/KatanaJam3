@@ -7,6 +7,8 @@ public class CarObject : MonoBehaviour
     public Vector3 sourcePosition, targetPosition;
     public float velocity = 10.0f;
 
+    public AudioClip engineSoundClip;
+
     public CarObject(Vector3 start, Vector3 target)
     {
         sourcePosition = start;
@@ -33,6 +35,12 @@ public class CarObject : MonoBehaviour
     {
         float step = Time.deltaTime * velocity;
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
+        transform.rotation = Quaternion.LookRotation(targetPosition);
+
+        if (engineSoundClip)
+        {
+            // AudioSource.PlayClipAtPoint(engineSoundClip, transform.position);
+        }
     }
 
 

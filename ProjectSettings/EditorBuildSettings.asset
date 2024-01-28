@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestScene_Georgii.unity
     guid: 79cfbc3d4104d2940b0d1412d88b08aa
+  - enabled: 1
+    path: Assets/Scenes/Crowded_city.unity
+    guid: fb7eca7be7249e54086491fc382d41ff
   m_configObjects: {}
