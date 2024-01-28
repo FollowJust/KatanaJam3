@@ -14,6 +14,7 @@ public class CarObject : WalkingEnemyObjectBase
     void Start()
     {
         // transform.position = sourcePosition;
+        target = GameObject.FindGameObjectsWithTag("Player")[0];
     }
 
     // Update is called once per frame
