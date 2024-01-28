@@ -11,12 +11,14 @@ public class PukeEnemyObject : WalkingEnemyObjectBase
 
     void Start()
     {
+        animationController = GetComponentInChildren<Animator>();
     }
 
     void Update()
     {
-        base.Move();
-        Puke();
+        // base.Move();
+        base.Idle();
+        // Puke();
     }
 
     void Puke()

@@ -29,9 +29,13 @@ public class Bride : MonoBehaviour
     private bool hasWon = false;
     private GameObject winningMessage;
 
+    private Animator animatorController;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        animatorController = GetComponentInChildren<Animator>();
+
         UnityEngine.Cursor.visible = false;
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
 
@@ -61,6 +65,7 @@ public class Bride : MonoBehaviour
             rightVector.Normalize();
 
             bool idle = true;
+            bool slide = false;
 
             Vector2 playerInput = new Vector2(0.0f, 0.0f);
             if (Input.GetKey(KeyCode.W))
@@ -83,6 +88,12 @@ public class Bride : MonoBehaviour
                 idle = false;
                 playerInput.y -= 1.0f;
             }
+            if (Input.GetKey(KeyCode.Space))
+            {
+                idle = false;
+                slide = true;
+            }
+
             Vector2.ClampMagnitude(playerInput, 1.0f);
 
             Vector3 acceleration = speed * ((playerInput.x * forwardVector) + (playerInput.y * rightVector)) - drag * velocity;
@@ -100,7 +111,12 @@ public class Bride : MonoBehaviour
             else 
             {
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(positionDelta), 0.3f);
-                GetComponentInChildren<Animator>().Play("Run");
+
+                if(!animatorController.GetCurrentAnimatorStateInfo(0).IsName("Slide"))
+                {
+                    string animationState = slide ? "Slide" : "Run";
+                    animatorController.Play(animationState);
+                }
             }
 
             controller.SimpleMove(velocity);
