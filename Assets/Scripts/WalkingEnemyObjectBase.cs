@@ -29,6 +29,7 @@ public class WalkingEnemyObjectBase : MonoBehaviour
             {
                 animationController.Play("Run");
             }
+
             agent.SetDestination(target.transform.position);
         }
     }
@@ -39,5 +40,16 @@ public class WalkingEnemyObjectBase : MonoBehaviour
         {
             animationController.Play("Idle");
         }
+    }
+
+    protected float DistanceToPlayer()
+    {
+        if (!target)
+        {
+            // Some ridiculously enermous value to fail proximity checks
+            return 112313212.0f;
+        }
+
+        return Vector3.Distance(transform.position, target.transform.position);
     }
 }
