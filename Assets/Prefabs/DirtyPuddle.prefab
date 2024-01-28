@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splashPrefab: {fileID: 6820782955300957122, guid: e8d9bde30f6cccb45903c62ab00b0f92, type: 3}
+  splashAudioClip: {fileID: 8300000, guid: 7756a64bdbaafd442b5834949d3a62ba, type: 3}
 --- !u!1001 &109570415997763524
 PrefabInstance:
   m_ObjectHideFlags: 0

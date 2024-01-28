@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class SplashObject : MonoBehaviour
 {
-    public Vector3 direction;
-
+    private Vector3 projectileDirection;
+    public float velocity = 10.0f;
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<ParticleSystem>().Play();
+        projectileDirection = Vector3.Normalize(transform.position - transform.parent.position);
+        projectileDirection.y = 0.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!GetComponent<ParticleSystem>().IsAlive())
-        {
-            Debug.Log("destroying myself");
-            Destroy(this.gameObject);
-        }
+        float step = Time.deltaTime * velocity;
+        transform.position += projectileDirection * step;
+        transform.rotation = Quaternion.LookRotation(projectileDirection);
     }
 }

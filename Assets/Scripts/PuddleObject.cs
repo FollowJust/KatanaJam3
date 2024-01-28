@@ -5,14 +5,22 @@ using UnityEngine;
 public class PuddleObject : MonoBehaviour
 {
     public GameObject splashPrefab;
+    public AudioClip splashAudioClip;
     private GameObject splashGameObject;
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<CarObject>())
         {
-            Debug.Log("BIG SPLASH!");
-            splashGameObject = Instantiate(splashPrefab, other.transform.position, other.transform.rotation);
+            Vector3 randomSplashDirection = new Vector3(Random.Range(0.0f, 1.0f), 0.0f, Random.Range(0.0f, 1.0f));
+            randomSplashDirection = randomSplashDirection * other.transform.position.magnitude * 0.4f;
+            randomSplashDirection += other.transform.position;
+            randomSplashDirection.y = 0;
+            splashGameObject = Instantiate(splashPrefab, randomSplashDirection, transform.rotation, transform);
+            if (splashAudioClip)
+            {
+                AudioSource.PlayClipAtPoint(splashAudioClip, randomSplashDirection);
+            }
         }
     }
 
