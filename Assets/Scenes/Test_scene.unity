@@ -19279,6 +19279,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &678181548 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5182002172075528916, guid: f4382ce07a0034640a65cf7978cca026, type: 3}
+  m_PrefabInstance: {fileID: 3622661673191279661}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &690638031
 Mesh:
   m_ObjectHideFlags: 0
@@ -47118,6 +47123,14 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 1316088990905996440, guid: f4382ce07a0034640a65cf7978cca026, type: 3}
   m_PrefabInstance: {fileID: 3622661673191279661}
   m_PrefabAsset: {fileID: 0}
+--- !u!81 &1673151931
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678181548}
+  m_Enabled: 1
 --- !u!1 &1676010896
 GameObject:
   m_ObjectHideFlags: 0
@@ -60786,7 +60799,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5182002172075528916, guid: f4382ce07a0034640a65cf7978cca026, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1673151931}
   m_SourcePrefab: {fileID: 100100000, guid: f4382ce07a0034640a65cf7978cca026, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
