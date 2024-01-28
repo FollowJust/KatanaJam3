@@ -9,6 +9,8 @@ public class PukeEnemyObject : WalkingEnemyObjectBase
 
     private float timeAfterLastPuke = 0.0f;
     public AudioClip pukeAudioClip;
+    public float maxActiveDistance = 1000.0f;
+    public float maxActivePukeDistance = 100.0f;
 
     void Start()
     {
@@ -18,9 +20,19 @@ public class PukeEnemyObject : WalkingEnemyObjectBase
 
     void Update()
     {
-        // base.Move();
-        base.Idle();
-        Puke();
+        if (DistanceToPlayer() < maxActiveDistance)
+        {
+            base.Move();
+        }
+        else 
+        {
+            base.Idle();
+        }
+        
+        if (DistanceToPlayer() < maxActivePukeDistance)
+        {
+            Puke();
+        }
     }
 
     void Puke()

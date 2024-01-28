@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class HomelessEnemyObject : WalkingEnemyObjectBase
 {
+    public float maxActiveDistance = 10.0f;
+
     void Start()
     {
+        target = GameObject.FindGameObjectsWithTag("Player")[0];
         animationController = GetComponentInChildren<Animator>();
     }
 
     void Update()
     {
-        // Maybe add stamina for him?
-        base.Move();
-        //base.Idle();
+        if (DistanceToPlayer() < maxActiveDistance)
+        {
+            base.Move();
+        }
+        else
+        {
+            base.Idle();
+        }
     }
 }

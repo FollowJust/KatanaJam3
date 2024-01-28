@@ -171,7 +171,7 @@ public class Bride : MonoBehaviour
         DirtyObject dirtyObject = hit.gameObject.GetComponent<DirtyObject>();
         if (dirtyObject != null && !dirtyObject.GetWasTriggered()) 
         {
-            Debug.Log($"Name {dirtyObject.name}");
+            Debug.Log($"Name {dirtyObject.name}, Dirt Amount {dirtyObject.dirtAmount}, dirtiness {dirtiness}");
             dirtyObject.SetWasTriggered();
 
             dirtiness += dirtyObject.dirtAmount;

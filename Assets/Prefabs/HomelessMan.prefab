@@ -80,6 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 2095710622472926335}
+  maxActiveDistance: 10
 --- !u!114 &7481199513247921572
 MonoBehaviour:
   m_ObjectHideFlags: 0
