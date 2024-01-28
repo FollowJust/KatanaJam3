@@ -33,6 +33,7 @@ public class Bride : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         UnityEngine.Cursor.visible = false;
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
 
         deadMessage = GameObject.FindGameObjectWithTag("DeadMessage");
         if (deadMessage)
@@ -45,21 +46,37 @@ public class Bride : MonoBehaviour
         {
             winningMessage.SetActive(false);
         }
-
-        forwardVector = GetComponentInChildren<Camera>().transform.forward;
-        forwardVector.y = 0.0f;
-        forwardVector.Normalize();
-
-        rightVector = GetComponentInChildren<Camera>().transform.right;
-        rightVector.y = 0.0f;
-        rightVector.Normalize();
     }
 
     void Update()
     {
         if (!isDead && !hasWon)
         {
-            Vector2 playerInput = new Vector2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
+            forwardVector = GetComponentInChildren<Camera>().transform.forward;
+            forwardVector.y = 0.0f;
+            forwardVector.Normalize();
+
+            rightVector = GetComponentInChildren<Camera>().transform.right;
+            rightVector.y = 0.0f;
+            rightVector.Normalize();
+
+            Vector2 playerInput = new Vector2(0.0f, 0.0f);
+            if (Input.GetKey(KeyCode.W))
+            {
+                playerInput.x += 1.0f;
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                playerInput.x -= 1.0f;
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                playerInput.y += 1.0f;
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                playerInput.y -= 1.0f;
+            }
             Vector2.ClampMagnitude(playerInput, 1.0f);
 
             Vector3 acceleration = speed * ((playerInput.x * forwardVector) + (playerInput.y * rightVector)) - drag * velocity;
