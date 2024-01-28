@@ -10,6 +10,8 @@ public class BirdObject : MonoBehaviour
     private Vector3 targetPosition;
     [SerializeField]
     private float velocity = 10.0f;
+    private float interval;
+    private float timer;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +19,8 @@ public class BirdObject : MonoBehaviour
         targetPosition = transform.position;
         targetPosition.x = Random.Range(minX, maxX);
         targetPosition.z = Random.Range(minZ, maxZ);
+        interval = Random.Range(0, 100);
+        timer = interval;
     }
 
     // Update is called once per frame
@@ -29,6 +33,24 @@ public class BirdObject : MonoBehaviour
             targetPosition = transform.position;
             targetPosition.x = Random.Range(minX, maxX);
             targetPosition.z = Random.Range(minZ, maxZ);
+        }
+
+        timer -= Time.deltaTime;
+        if (timer <= 0)
+        {
+            var temp = Random.Range(0, 250);
+            if (temp == 7)
+            {
+                var soundsArray = GetComponents<AudioSource>();
+                var rnd = Random.Range(0, soundsArray.Length - 1);
+                soundsArray[rnd].volume = 0.005f;
+                soundsArray[rnd].priority = 20;
+                soundsArray[rnd].maxDistance = 40;
+                var clip = soundsArray[rnd].clip;
+
+                AudioSource.PlayClipAtPoint(soundsArray[rnd].clip, transform.position);
+                soundsArray[rnd].Play();
+            }
         }
     }
     void Move()
