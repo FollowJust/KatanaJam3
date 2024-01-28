@@ -1044,7 +1044,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1332979053
+--- !u!1001 &1627650673
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1054,15 +1054,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1388824916364559463, guid: f63645102cb17d240a9bb04349add589, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.060041
+      value: 4.7
       objectReference: {fileID: 0}
     - target: {fileID: 1388824916364559463, guid: f63645102cb17d240a9bb04349add589, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.0000005
+      value: -1.13
       objectReference: {fileID: 0}
     - target: {fileID: 1388824916364559463, guid: f63645102cb17d240a9bb04349add589, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.9453382
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1388824916364559463, guid: f63645102cb17d240a9bb04349add589, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1091,10 +1091,6 @@ PrefabInstance:
     - target: {fileID: 1388824916364559463, guid: f63645102cb17d240a9bb04349add589, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4516621348339083464, guid: f63645102cb17d240a9bb04349add589, type: 3}
-      propertyPath: pukeCooldown
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4986234482763920859, guid: f63645102cb17d240a9bb04349add589, type: 3}
       propertyPath: m_Name
@@ -1707,4 +1703,4 @@ SceneRoots:
   - {fileID: 152261973}
   - {fileID: 441205792}
   - {fileID: 1162793938}
-  - {fileID: 1332979053}
+  - {fileID: 1627650673}

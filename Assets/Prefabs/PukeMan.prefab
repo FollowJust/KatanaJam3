@@ -80,7 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 2095710622472926335}
   pukePrefab: {fileID: 6820782955300957122, guid: c7a6a2b00a8bd4d4b91b72df6b06b37c, type: 3}
-  pukeCooldown: 50
+  pukeCooldown: 10
   pukeAudioClip: {fileID: 8300000, guid: 9c37252ac0ffe0f48a10d25a3e85d182, type: 3}
 --- !u!136 &5684864814157042375
 CapsuleCollider:
