@@ -1,6 +1,7 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.ProBuilder.Shapes;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
@@ -31,8 +32,13 @@ public class Bride : MonoBehaviour
 
     private Animator animatorController;
 
+    private GameObject arch;
+    bool isFinishing = false;
+
     void Start()
     {
+        GetComponent<AudioSource>().Play();
+        arch = GameObject.FindGameObjectWithTag("Arch");
         controller = GetComponent<CharacterController>();
         animatorController = GetComponentInChildren<Animator>();
 
@@ -120,6 +126,17 @@ public class Bride : MonoBehaviour
             }
 
             controller.SimpleMove(velocity);
+
+            var heading = arch.transform.position - this.transform.position;
+
+            int maxRange = 50;
+            
+            if (heading.sqrMagnitude < maxRange * maxRange && !isFinishing)
+            {
+                GetComponent<AudioSource>().Stop();
+                arch.GetComponent<AudioSource>().Play();
+                isFinishing = true;
+            }
         }
     }
 
