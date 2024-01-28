@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class NewBehaviourScript : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] enemyPrefabs;
+
+    [SerializeField]
+    private int countEnemies;
 
     //walk, fly, drive
     //[SerializeField]
@@ -30,7 +34,7 @@ public class NewBehaviourScript : MonoBehaviour
             dictObjBounds.Add(enemy.name, enemyBounds);
             Destroy(enemySpawned);
         }
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < countEnemies; i++)
         {
             spawnEnemys(enemyPrefabs);
         }
@@ -42,6 +46,7 @@ public class NewBehaviourScript : MonoBehaviour
         {
             bool isIntersects = false;
 
+            //var asd = this.GameObject<NavMeshAgent>
             Collider collider = this.GetComponent<Collider>();
             Bounds bounds = collider.bounds;
             Vector3 spawnPosition;
@@ -54,7 +59,7 @@ public class NewBehaviourScript : MonoBehaviour
                 float z = Random.Range(bounds.min.z, bounds.max.z);
                 if (enemy.CompareTag("EnemyWalk") || enemy.CompareTag("EnemyDrive") || enemy.CompareTag("DirtyObject"))
                 {
-                    y = bounds.min.y + (dictObjBounds[enemy.name].size.y) / 2;
+                    y = bounds.min.y;/* + (dictObjBounds[enemy.name].size.y) / 2*/;
                 }
                 spawnPosition = new Vector3(x, y, z);
                 Bounds boundsNew = new Bounds(spawnPosition, dictObjBounds[enemy.name].size);

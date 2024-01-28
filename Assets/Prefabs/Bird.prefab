@@ -143,22 +143,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4d8580cb21f69c41b73a6b65c3f7033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minX: 450
-  minZ: 450
-  maxX: 600
-  maxZ: 700
+  minX: 440
+  minZ: 670
+  maxX: 670
+  maxZ: 900
   velocity: 10
-  Sounds:
-  - {fileID: 6921750234484997028}
-  - {fileID: 4570637736321286287}
-  - {fileID: 6921750234484997028}
-  - {fileID: 6921750234484997028}
-  - {fileID: 6921750234484997028}
-  - {fileID: 6921750234484997028}
-  - {fileID: 6921750234484997028}
-  - {fileID: 6921750234484997028}
-  - {fileID: 6921750234484997028}
-  - {fileID: 6921750234484997028}
 --- !u!82 &6921750234484997028
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1181,4 +1170,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4611607660166313626, guid: f012fc4d2ec01df47871be569da79932, type: 3}
   m_PrefabInstance: {fileID: 1852496629207568398}
   m_PrefabAsset: {fileID: 0}
-

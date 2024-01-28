@@ -16,7 +16,6 @@ public class HomelessEnemyObject : WalkingEnemyObjectBase
     {
         if (DistanceToPlayer() < maxActiveDistance)
         {
-            Debug.Log("Move fucker");
             base.Move();
         }
         else
