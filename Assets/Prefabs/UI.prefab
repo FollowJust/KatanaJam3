@@ -637,5 +637,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 261b86e5eea94b3489eeccb6ee31028f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bride: {fileID: 0}
+  bride: {fileID: 429163498946610315, guid: f4382ce07a0034640a65cf7978cca026, type: 3}
   maxWidth: 200
