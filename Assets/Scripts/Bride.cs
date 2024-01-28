@@ -29,9 +29,13 @@ public class Bride : MonoBehaviour
     private bool hasWon = false;
     private GameObject winningMessage;
 
+    private Animator animatorController;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        animatorController = GetComponentInChildren<Animator>();
+
         UnityEngine.Cursor.visible = false;
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
 
@@ -60,23 +64,36 @@ public class Bride : MonoBehaviour
             rightVector.y = 0.0f;
             rightVector.Normalize();
 
+            bool idle = true;
+            bool slide = false;
+
             Vector2 playerInput = new Vector2(0.0f, 0.0f);
             if (Input.GetKey(KeyCode.W))
             {
+                idle = false;
                 playerInput.x += 1.0f;
             }
             if (Input.GetKey(KeyCode.S))
             {
+                idle = false;
                 playerInput.x -= 1.0f;
             }
             if (Input.GetKey(KeyCode.D))
             {
+                idle = false;
                 playerInput.y += 1.0f;
             }
             if (Input.GetKey(KeyCode.A))
             {
+                idle = false;
                 playerInput.y -= 1.0f;
             }
+            if (Input.GetKey(KeyCode.Space))
+            {
+                idle = false;
+                slide = true;
+            }
+
             Vector2.ClampMagnitude(playerInput, 1.0f);
 
             Vector3 acceleration = speed * ((playerInput.x * forwardVector) + (playerInput.y * rightVector)) - drag * velocity;
@@ -86,6 +103,21 @@ public class Bride : MonoBehaviour
             // A stupid hack because character controller doesn't see collisions if it doesn't move. So I move it always
             positionDelta.x += (frameID % 2 == 0) ? 0.001f : -0.001f;
             frameID++;
+
+            if (idle)
+            {
+                GetComponentInChildren<Animator>().Play("Idle");
+            }
+            else 
+            {
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(positionDelta), 0.3f);
+
+                if(!animatorController.GetCurrentAnimatorStateInfo(0).IsName("Slide"))
+                {
+                    string animationState = slide ? "Slide" : "Run";
+                    animatorController.Play(animationState);
+                }
+            }
 
             controller.SimpleMove(velocity);
         }
