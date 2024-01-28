@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6114012104601001821}
   - component: {fileID: 7231652568900640222}
   - component: {fileID: 2095710622472926335}
-  - component: {fileID: -6479418868633523424}
+  - component: {fileID: 4516621348339083464}
   m_Layer: 0
-  m_Name: Trashmen
+  m_Name: PukeMan
   m_TagString: EnemyWalk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,7 +129,7 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &-6479418868633523424
+--- !u!114 &4516621348339083464
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,7 +138,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4986234482763920859}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a07c851e15f0c3547bb9b79711c3c1ee, type: 3}
+  m_Script: {fileID: 11500000, guid: e88fb9475c7607d4fa5289caf43a8b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 2582768522587666323, guid: f4382ce07a0034640a65cf7978cca026, type: 3}
+  agent: {fileID: 2095710622472926335}
+  pukePrefab: {fileID: 6820782955300957122, guid: c7a6a2b00a8bd4d4b91b72df6b06b37c, type: 3}
+  pukeCooldown: 10
+  timeAfterLastPuke: 0
