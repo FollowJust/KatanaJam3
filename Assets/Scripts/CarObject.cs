@@ -6,7 +6,8 @@ public class CarObject : MonoBehaviour
 {
     public Vector3 sourcePosition, targetPosition;
     public float velocity = 10.0f;
-
+    public float soundCooldown = 100000.0f;
+    private float timeAfterSound = 0.0f;
     public AudioClip engineSoundClip;
 
     public CarObject(Vector3 start, Vector3 target)
@@ -39,7 +40,15 @@ public class CarObject : MonoBehaviour
 
         if (engineSoundClip)
         {
-            // AudioSource.PlayClipAtPoint(engineSoundClip, transform.position);
+            if (timeAfterSound > 0.001f)
+            {
+                // timeAfterSound -= Time.deltaTime * soundCooldown * 0.05f;
+            }
+            else
+            {
+                // AudioSource.PlayClipAtPoint(engineSoundClip, transform.position);
+                timeAfterSound = soundCooldown;
+            }
         }
     }
 

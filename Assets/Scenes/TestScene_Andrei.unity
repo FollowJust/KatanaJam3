@@ -1082,6 +1082,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1316088990905996440, guid: f4382ce07a0034640a65cf7978cca026, type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2582768522587666323, guid: f4382ce07a0034640a65cf7978cca026, type: 3}
       propertyPath: m_Name
       value: Bride

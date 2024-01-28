@@ -49,6 +49,14 @@ public class DirtyObject : MonoBehaviour
                 
                 gameObject.transform.position += positionDelta;
             } break;
+            case DirtyObjectType.DirtySplashes:
+            {
+                Vector3 acceleration = new Vector3(0.0f, -4.8f, 0.0f);
+                velocity += acceleration * Time.deltaTime;
+                Vector3 positionDelta = Time.deltaTime * velocity + 0.5f * Time.deltaTime * Time.deltaTime * acceleration;
+                
+                gameObject.transform.position += positionDelta;
+            } break;
         }
     }
 
