@@ -12,6 +12,7 @@ public class DirtAmountDirt : MonoBehaviour
 
     void Start()
     {
+        bride = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Bride>();
         rectTransform = GetComponent<RectTransform>();
     }
 
@@ -22,7 +23,7 @@ public class DirtAmountDirt : MonoBehaviour
         {
             float dirtinessPercent = bride.GetDirtiness() / bride.GetMaxDirtiness();
             float width = maxWidth * dirtinessPercent;
-
+            // Debug.Log($"dirtinessPercent {dirtinessPercent}, bride.GetDirtiness() {bride.GetDirtiness()}, bride.GetMaxDirtiness() {bride.GetMaxDirtiness()}");
             rectTransform.sizeDelta = new Vector2(width, rectTransform.sizeDelta.y);
             rectTransform.anchoredPosition = new Vector2(width / 2.0f, 0.0f);
         }
