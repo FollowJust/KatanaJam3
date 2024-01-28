@@ -33,6 +33,7 @@ public class CarObject : MonoBehaviour
     {
         float step = Time.deltaTime * velocity;
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
+        transform.rotation = Quaternion.LookRotation(targetPosition);
     }
 
 
