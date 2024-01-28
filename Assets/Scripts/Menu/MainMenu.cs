@@ -16,6 +16,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame() 
     {
-        SceneManager.LoadScene("MainScene");
+        playButton.GetComponent<AudioSource>().Play();
+        SceneManager.LoadScene("Crowded_city");
     }
 }
