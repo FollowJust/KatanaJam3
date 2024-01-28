@@ -9,7 +9,8 @@ public enum DirtyObjectType
     PigeonShit,
     Brush,
     DirtyPuddle,
-    DirtySplashes
+    DirtySplashes,
+    Shit
 };
 
 public class DirtyObject : MonoBehaviour

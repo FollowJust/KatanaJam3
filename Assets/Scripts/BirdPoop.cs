@@ -25,7 +25,8 @@ public class BirdPoop : MonoBehaviour
             if (rnd <= 10)
             {
                 var position = transform.position;
-                position.y -= transform.localScale.y;
+                position.y -= 2;
+                //position.y -= transform.localScale.y;
                 Instantiate(Poop, position, Quaternion.identity);
             }
             timer = 0.5f;
