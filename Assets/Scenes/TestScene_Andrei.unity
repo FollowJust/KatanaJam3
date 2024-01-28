@@ -449,7 +449,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1388824916364559463, guid: 48a8238ab0bd12a47955359804d91135, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.92
       objectReference: {fileID: 0}
     - target: {fileID: 1388824916364559463, guid: 48a8238ab0bd12a47955359804d91135, type: 3}
       propertyPath: m_LocalPosition.z
@@ -848,17 +848,6 @@ MonoBehaviour:
   type: 0
   dirtAmount: 10
   destroyAfterCollision: 1
---- !u!114 &1183523562 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 429163498946610315, guid: f4382ce07a0034640a65cf7978cca026, type: 3}
-  m_PrefabInstance: {fileID: 1628846422}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b334fc9c51bfb449bb3b28dfd743798, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1246210293
 GameObject:
   m_ObjectHideFlags: 0
@@ -1389,7 +1378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 261b86e5eea94b3489eeccb6ee31028f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bride: {fileID: 1183523562}
+  bride: {fileID: 0}
   maxWidth: 200
 --- !u!1 &1995365800
 GameObject:
@@ -1664,7 +1653,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1388824916364559463, guid: f63645102cb17d240a9bb04349add589, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.96
       objectReference: {fileID: 0}
     - target: {fileID: 1388824916364559463, guid: f63645102cb17d240a9bb04349add589, type: 3}
       propertyPath: m_LocalPosition.z
