@@ -123,6 +123,7 @@ MonoBehaviour:
   sourcePosition: {x: 0, y: 0, z: 0}
   targetPosition: {x: 10, y: 0, z: 0}
   velocity: 5
+  engineSoundClip: {fileID: 8300000, guid: 584902a1a443674488457d35bf5a7de6, type: 3}
 --- !u!54 &-2279924579587415042
 Rigidbody:
   m_ObjectHideFlags: 0
