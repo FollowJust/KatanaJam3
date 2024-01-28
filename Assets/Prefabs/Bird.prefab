@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8964819144912760327}
   - component: {fileID: 4581054831311497787}
   - component: {fileID: -4478205697189680207}
+  - component: {fileID: 997472150229285498}
   m_Layer: 0
   m_Name: Bird
   m_TagString: EnemyFly
@@ -119,3 +120,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poop: {fileID: 6820782955300957122, guid: d46a31f15d1cf0c41aea0d5478309624, type: 3}
+--- !u!114 &997472150229285498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288927361835280212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4d8580cb21f69c41b73a6b65c3f7033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minX: 450
+  minZ: 450
+  maxX: 600
+  maxZ: 700
+  velocity: 10
