@@ -11,18 +11,12 @@ public class BirdObject : MonoBehaviour
     [SerializeField]
     private float velocity = 10.0f;
 
-
-    //public BirdObject(Vector3 start, Vector3 target)
-    //{
-    //    sourcePosition = start;
-    //    targetPosition = target + (target - start) * 0.1f;
-    //}
     // Start is called before the first frame update
     void Start()
     {
         targetPosition = transform.position;
-        targetPosition.x = /*transform.position.x * */Random.Range(minX, maxX);
-        targetPosition.z = /*transform.position.z * */Random.Range(minZ, maxZ);
+        targetPosition.x = Random.Range(minX, maxX);
+        targetPosition.z = Random.Range(minZ, maxZ);
     }
 
     // Update is called once per frame
