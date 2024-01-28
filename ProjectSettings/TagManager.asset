@@ -15,6 +15,7 @@ TagManager:
   - EnemyDrive
   - TimeOverMessage
   - TimerCounterMessage
+  - Arch
   layers:
   - Default
   - TransparentFX
