@@ -10,6 +10,7 @@ public class PuddleObject : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("OnTriggerEnter Puddle");
         if (other.gameObject.GetComponent<CarObject>())
         {
             Debug.Log("Car on Puddle");
